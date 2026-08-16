@@ -20,20 +20,20 @@ export default function Gifts({ content }: { content: SiteContent }) {
       {/* photo-filled name letters — plain wrapper: a filtered ancestor would
           isolate mix-blend-multiply and keep the cutouts' white boxes visible */}
       <div className="relative mx-auto flex w-fit items-center gap-2">
-        <Parallax depth={14} className="w-20 md:w-24">
+        <Parallax depth={14} className="w-14 shrink-0 md:w-24">
           <div className="anim-balloon" style={{ ["--dur" as string]: "6.4s" }}>
             <BalloonCluster className="w-full" />
             <TeddyBear className="absolute -bottom-5 left-1/2 w-12 -translate-x-1/2" />
           </div>
         </Parallax>
         {g.letterImages.length > 0 ? (
-          <div className="flex max-w-[80vw] flex-wrap items-end justify-center gap-1 md:gap-2">
+          <div className="flex flex-nowrap items-end justify-center gap-[1.5vw] md:gap-2">
             {g.letterImages.map((src, i) => (
               <motion.img
                 key={i}
                 src={src}
                 alt={g.nameLetters[i] ?? `Letter ${i + 1}`}
-                className="h-[16vw] w-auto max-h-40 mix-blend-multiply md:h-44"
+                className="w-auto mix-blend-multiply h-[clamp(3rem,17vw,11rem)]"
                 initial={{ opacity: 0, y: 20, rotate: i % 2 ? 2 : -2 }}
                 whileInView={{ opacity: 1, y: 0, rotate: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
