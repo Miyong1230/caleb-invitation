@@ -4,7 +4,8 @@ import { isAdmin } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
-const MAX_BYTES = 8 * 1024 * 1024;
+// Vercel serverless request bodies cap at ~4.5 MB; stay under it.
+const MAX_BYTES = 4 * 1024 * 1024;
 
 export async function POST(req: NextRequest) {
   if (!(await isAdmin())) {
@@ -24,7 +25,7 @@ export async function POST(req: NextRequest) {
     }
     if (file.size > MAX_BYTES) {
       return NextResponse.json(
-        { error: "Image is larger than 8 MB. Please resize it first." },
+        { error: "Image is larger than 4 MB. Please resize it first." },
         { status: 400 }
       );
     }

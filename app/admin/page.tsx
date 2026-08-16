@@ -67,6 +67,41 @@ function TextField({
   );
 }
 
+/** Downscale/recompress big photos in the browser so uploads stay under
+ * the hosting limit (~4.5 MB on Vercel). Keeps small files untouched. */
+async function shrinkImage(file: File): Promise<File> {
+  const skip =
+    !file.type.startsWith("image/") ||
+    file.type === "image/gif" ||
+    file.type === "image/svg+xml";
+  if (skip || file.size < 900_000) return file;
+  try {
+    const bitmap = await createImageBitmap(file);
+    const scale = Math.min(1, 1600 / Math.max(bitmap.width, bitmap.height));
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.max(1, Math.round(bitmap.width * scale));
+    canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+    canvas.getContext("2d")!.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+    const isPng = file.type === "image/png";
+    let blob = await new Promise<Blob | null>((resolve) =>
+      canvas.toBlob(resolve, isPng ? "image/png" : "image/jpeg", 0.85)
+    );
+    // A PNG photo can stay huge — fall back to JPEG if it's still oversized.
+    if (blob && isPng && blob.size > 3_500_000) {
+      blob = await new Promise<Blob | null>((resolve) =>
+        canvas.toBlob(resolve, "image/jpeg", 0.85)
+      );
+    }
+    if (!blob || blob.size >= file.size) return file;
+    const ext = blob.type === "image/png" ? ".png" : ".jpg";
+    return new File([blob.slice()], file.name.replace(/\.\w+$/, "") + ext, {
+      type: blob.type,
+    });
+  } catch {
+    return file;
+  }
+}
+
 function PhotoField({
   label,
   value,
@@ -79,15 +114,31 @@ function PhotoField({
   const [uploading, setUploading] = useState(false);
   const [err, setErr] = useState("");
 
-  const upload = async (file: File) => {
+  const upload = async (original: File) => {
     setUploading(true);
     setErr("");
     try {
+      const file = await shrinkImage(original);
+      if (file.size > 4_000_000) {
+        throw new Error(
+          "This image is still over 4 MB after compression — please resize it and try again."
+        );
+      }
       const form = new FormData();
       form.append("file", file);
       const res = await fetch("/api/upload", { method: "POST", body: form });
-      const body = await res.json();
-      if (!res.ok) throw new Error(body.error || "Upload failed.");
+      const text = await res.text();
+      let body: { url?: string; error?: string };
+      try {
+        body = JSON.parse(text);
+      } catch {
+        throw new Error(
+          res.status === 413
+            ? "The server rejected the image as too large. Please use a smaller photo."
+            : `Upload failed (${res.status}). Please try again.`
+        );
+      }
+      if (!res.ok || !body.url) throw new Error(body.error || "Upload failed.");
       onChange(body.url);
     } catch (e) {
       setErr(e instanceof Error ? e.message : "Upload failed.");
