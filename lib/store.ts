@@ -100,6 +100,26 @@ export async function addRsvp(
   await fs.writeFile(RSVP_FILE, JSON.stringify(list, null, 2), "utf8");
 }
 
+export async function deleteRsvp(id: string): Promise<void> {
+  const sb = getSupabase();
+  if (sb) {
+    const { error } = await sb.from("rsvps").delete().eq("id", id);
+    if (error) throw new Error(error.message);
+    return;
+  }
+  let list: RsvpEntry[] = [];
+  try {
+    list = JSON.parse(await fs.readFile(RSVP_FILE, "utf8"));
+  } catch {
+    return;
+  }
+  await fs.writeFile(
+    RSVP_FILE,
+    JSON.stringify(list.filter((r) => r.id !== id), null, 2),
+    "utf8"
+  );
+}
+
 export async function getRsvps(): Promise<RsvpEntry[]> {
   const sb = getSupabase();
   if (sb) {

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { addRsvp, getRsvps } from "@/lib/store";
+import { addRsvp, getRsvps, deleteRsvp } from "@/lib/store";
 import { isAdmin } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
@@ -33,4 +33,23 @@ export async function GET() {
   }
   const list = await getRsvps();
   return NextResponse.json(list);
+}
+
+export async function DELETE(req: NextRequest) {
+  if (!(await isAdmin())) {
+    return NextResponse.json({ error: "Not signed in." }, { status: 401 });
+  }
+  const id = new URL(req.url).searchParams.get("id");
+  if (!id) {
+    return NextResponse.json({ error: "Missing entry id." }, { status: 400 });
+  }
+  try {
+    await deleteRsvp(id);
+    return NextResponse.json({ ok: true });
+  } catch (err) {
+    return NextResponse.json(
+      { error: err instanceof Error ? err.message : "Could not delete." },
+      { status: 500 }
+    );
+  }
 }

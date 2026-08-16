@@ -249,9 +249,21 @@ function Login({ onDone }: { onDone: () => void }) {
 
 /* ---------- RSVP table ---------- */
 
+function StatCard({ value, label }: { value: number; label: string }) {
+  return (
+    <div className="flex-1 rounded-xl border border-[#dbe7f3] bg-[#f7fafd] px-4 py-3 text-center">
+      <div className="text-3xl font-bold text-[#33569c]">{value}</div>
+      <div className="mt-0.5 text-xs font-semibold uppercase tracking-wide text-[#7a90ad]">
+        {label}
+      </div>
+    </div>
+  );
+}
+
 function RsvpTable() {
   const [rows, setRows] = useState<RsvpEntry[] | null>(null);
   const [err, setErr] = useState("");
+  const [deleting, setDeleting] = useState<string | null>(null);
 
   useEffect(() => {
     fetch("/api/rsvp")
@@ -263,7 +275,32 @@ function RsvpTable() {
       .catch((e) => setErr(e.message));
   }, []);
 
-  if (err) return <p className="text-sm text-[#b03434]">{err}</p>;
+  const remove = async (entry: RsvpEntry) => {
+    if (
+      !window.confirm(
+        `Remove the RSVP from “${entry.name}”? This can’t be undone.`
+      )
+    ) {
+      return;
+    }
+    setDeleting(entry.id);
+    setErr("");
+    try {
+      const res = await fetch(`/api/rsvp?id=${encodeURIComponent(entry.id)}`, {
+        method: "DELETE",
+      });
+      if (!res.ok) {
+        throw new Error((await res.json()).error || "Could not delete.");
+      }
+      setRows((prev) => (prev ? prev.filter((r) => r.id !== entry.id) : prev));
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : "Could not delete.");
+    } finally {
+      setDeleting(null);
+    }
+  };
+
+  if (err && !rows) return <p className="text-sm text-[#b03434]">{err}</p>;
   if (!rows) return <p className="text-sm text-[#5a769c]">Loading RSVPs…</p>;
   if (rows.length === 0)
     return (
@@ -272,17 +309,21 @@ function RsvpTable() {
       </p>
     );
 
-  const attendingCount = rows
-    .filter((r) => r.attending === "yes")
-    .reduce((sum, r) => sum + (r.guests || 1), 0);
+  const attendingRows = rows.filter((r) => r.attending === "yes");
+  const totalGuests = attendingRows.reduce((sum, r) => sum + (r.guests || 1), 0);
 
   return (
     <div>
-      <p className="mb-3 text-sm text-[#33569c]">
-        <strong>{attendingCount}</strong> guest{attendingCount === 1 ? "" : "s"} confirmed
-        across <strong>{rows.filter((r) => r.attending === "yes").length}</strong> parties ·{" "}
-        {rows.filter((r) => r.attending === "no").length} can’t make it
-      </p>
+      <div className="mb-4 flex flex-col gap-3 sm:flex-row">
+        <StatCard value={totalGuests} label="Total guests coming" />
+        <StatCard value={attendingRows.length} label="Parties attending" />
+        <StatCard
+          value={rows.length - attendingRows.length}
+          label="Can’t make it"
+        />
+        <StatCard value={rows.length} label="Total responses" />
+      </div>
+      {err && <p className="mb-2 text-sm text-[#b03434]">{err}</p>}
       <div className="overflow-x-auto rounded-xl border border-[#dbe7f3]">
         <table className="w-full min-w-[560px] bg-white text-left text-sm">
           <thead className="bg-[#f0f6fb] text-[#33569c]">
@@ -292,6 +333,7 @@ function RsvpTable() {
               <th className="px-4 py-2.5 font-semibold">Guests</th>
               <th className="px-4 py-2.5 font-semibold">Message</th>
               <th className="px-4 py-2.5 font-semibold">When</th>
+              <th className="px-4 py-2.5" />
             </tr>
           </thead>
           <tbody>
@@ -313,6 +355,15 @@ function RsvpTable() {
                 <td className="max-w-[240px] px-4 py-2.5 text-[#5a769c]">{r.message}</td>
                 <td className="whitespace-nowrap px-4 py-2.5 text-[#7a90ad]">
                   {new Date(r.createdAt).toLocaleString()}
+                </td>
+                <td className="px-4 py-2.5">
+                  <button
+                    onClick={() => remove(r)}
+                    disabled={deleting === r.id}
+                    className="text-sm font-semibold text-[#b03434] hover:underline disabled:opacity-50"
+                  >
+                    {deleting === r.id ? "Removing…" : "Remove"}
+                  </button>
                 </td>
               </tr>
             ))}
