@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-serif: var(--font-garamond), Georgia, serif;
+  --font-sans: var(--font-patrick-hand), "Comic Sans MS", cursive;
+}
+
+/* ---------- Watercolor teddy-bear world tokens ---------- */
+:root {
+  --sky-wash: #e3eff9;
+  --sky-light: #f2f8fd;
+  --sky-mid: #bcd6ec;
+  --sky-deep: #8fb4d9;
+  --ink: #33569c;
+  --ink-deep: #2a4780;
+  --navy-panel: #31507e;
+  --cream: #fdf9f0;
+  --cream-deep: #f3ead9;
+  --tan: #c19a6f;
+  --tan-deep: #9a7048;
+  --fur: #d3a878;
+  --fur-light: #ecd4b4;
+  --gold: #eec95f;
+  --gold-deep: #d9a838;
+  --paper: #fbfdff;
+
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --font-script: var(--font-great-vibes);
+  --font-hand: var(--font-patrick-hand);
+  --font-serif: var(--font-garamond);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--sky-wash);
+  color: var(--ink-deep);
+  font-family: var(--font-hand), "Comic Sans MS", cursive;
+  overflow-x: hidden;
+}
+
+.font-script {
+  font-family: var(--font-script), cursive;
+}
+.font-hand {
+  font-family: var(--font-hand), cursive;
+}
+.font-serif-caps {
+  font-family: var(--font-serif), serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ---------- Watercolor ground ---------- */
+/* Turbulence-displaced washes give real pigment edges over the soft gradients. */
+.watercolor-ground {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='w' x='-25%25' y='-25%25' width='150%25' height='150%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='7'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='120'/%3E%3C/filter%3E%3Cg filter='url(%23w)'%3E%3Ccircle cx='190' cy='170' r='120' fill='%239cc0e4' fill-opacity='0.14'/%3E%3Ccircle cx='190' cy='170' r='120' fill='none' stroke='%238fb4d9' stroke-opacity='0.22' stroke-width='3'/%3E%3Ccircle cx='520' cy='330' r='150' fill='%23aecbe8' fill-opacity='0.12'/%3E%3Ccircle cx='520' cy='330' r='150' fill='none' stroke='%238fb4d9' stroke-opacity='0.18' stroke-width='3'/%3E%3Ccircle cx='300' cy='560' r='130' fill='%239cc0e4' fill-opacity='0.12'/%3E%3Ccircle cx='300' cy='560' r='130' fill='none' stroke='%238fb4d9' stroke-opacity='0.2' stroke-width='3'/%3E%3Ccircle cx='620' cy='90' r='90' fill='%23c3dbf0' fill-opacity='0.16'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 700px 700px,
+    radial-gradient(60rem 40rem at 12% 8%, rgba(188, 214, 236, 0.55), transparent 60%),
+    radial-gradient(50rem 34rem at 88% 20%, rgba(188, 214, 236, 0.5), transparent 60%),
+    radial-gradient(44rem 30rem at 22% 78%, rgba(163, 198, 228, 0.45), transparent 62%),
+    radial-gradient(56rem 36rem at 80% 88%, rgba(188, 214, 236, 0.5), transparent 60%),
+    linear-gradient(180deg, var(--sky-light) 0%, var(--sky-wash) 40%, #d7e8f6 100%);
+}
+
+/* Standalone wash overlay for panels (used inside positioned, overflow-hidden cards). */
+.watercolor-wash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='w' x='-25%25' y='-25%25' width='150%25' height='150%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='11'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='120'/%3E%3C/filter%3E%3Cg filter='url(%23w)'%3E%3Ccircle cx='170' cy='190' r='130' fill='%23b8d4ec' fill-opacity='0.2'/%3E%3Ccircle cx='170' cy='190' r='130' fill='none' stroke='%239cc0e4' stroke-opacity='0.28' stroke-width='3'/%3E%3Ccircle cx='540' cy='420' r='160' fill='%23c3dbf0' fill-opacity='0.18'/%3E%3Ccircle cx='540' cy='420' r='160' fill='none' stroke='%239cc0e4' stroke-opacity='0.22' stroke-width='3'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 700px 700px;
+}
+
+/* Requires a positioned element (all users carry their own position class). */
+.paper-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Gingham check frames (blue for gifts, tan for reminders) */
+.gingham-blue {
+  background:
+    repeating-linear-gradient(0deg, rgba(140, 178, 216, 0.55) 0 14px, transparent 14px 28px),
+    repeating-linear-gradient(90deg, rgba(140, 178, 216, 0.55) 0 14px, transparent 14px 28px),
+    #f5faff;
+}
+.gingham-tan {
+  background:
+    repeating-linear-gradient(0deg, rgba(198, 166, 126, 0.45) 0 14px, transparent 14px 28px),
+    repeating-linear-gradient(90deg, rgba(198, 166, 126, 0.45) 0 14px, transparent 14px 28px),
+    #fdf9f0;
+}
+
+/* Torn-paper edge for the dress-code navy panel */
+.torn-edge-top {
+  clip-path: polygon(
+    0% 3.2%, 3% 1%, 7% 3.6%, 12% 0.8%, 17% 3%, 23% 0.6%, 28% 2.8%, 34% 0.9%,
+    40% 3.2%, 46% 0.7%, 52% 2.6%, 58% 0.5%, 64% 3%, 70% 0.9%, 76% 2.7%,
+    82% 0.6%, 88% 3.1%, 94% 0.8%, 100% 2.6%,
+    100% 97%, 96% 99.4%, 91% 96.9%, 85% 99.2%, 79% 97.1%, 73% 99.5%, 67% 97.2%,
+    61% 99.1%, 55% 96.8%, 48% 99.3%, 42% 97%, 36% 99.4%, 30% 97.1%, 24% 99.2%,
+    18% 96.9%, 12% 99.5%, 6% 97.2%, 2% 99%, 0% 97.4%
+  );
+}
+
+/* Scalloped border for the reminders card */
+.scallop-frame {
+  --scallop: radial-gradient(circle, var(--tan) 60%, transparent 62%);
+}
+
+/* ---------- Ambient motion (CSS = off main thread) ---------- */
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(var(--tilt, 0deg)); }
+  50% { transform: translateY(-12px) rotate(calc(var(--tilt, 0deg) + var(--tilt-delta, 2deg))); }
+}
+@keyframes bob-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes drift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(26px); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.45; transform: scale(0.82) rotate(12deg); }
+}
+@keyframes balloon-rise {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-18px) rotate(2.5deg); }
+}
+@keyframes sway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(-6deg); }
+  40% { transform: rotate(5deg); }
+  60% { transform: rotate(-3deg); }
+  80% { transform: rotate(2deg); }
+}
+@keyframes seal-pulse {
+  0%, 100% { box-shadow: 0 2px 10px rgba(51, 86, 156, 0.35), 0 0 0 0 rgba(122, 162, 212, 0.55); }
+  70% { box-shadow: 0 2px 10px rgba(51, 86, 156, 0.35), 0 0 0 18px rgba(122, 162, 212, 0); }
+}
+
+.anim-bob { animation: bob var(--dur, 5s) ease-in-out infinite; }
+.anim-bob-soft { animation: bob-soft var(--dur, 4s) ease-in-out infinite; }
+.anim-drift { animation: drift var(--dur, 9s) ease-in-out infinite; }
+.anim-twinkle { animation: twinkle var(--dur, 2.6s) ease-in-out infinite; }
+.anim-balloon { animation: balloon-rise var(--dur, 6s) ease-in-out infinite; }
+.anim-sway { animation: sway var(--dur, 4s) ease-in-out infinite; transform-origin: top center; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-bob, .anim-bob-soft, .anim-drift, .anim-twinkle, .anim-balloon, .anim-sway {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- Interaction primitives ---------- */
+.pressable {
+  transition: transform 160ms var(--ease-out-strong);
+}
+.pressable:active {
+  transform: scale(0.96);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .polaroid-hover {
+    transition: transform 220ms var(--ease-out-strong), box-shadow 220ms var(--ease-out-strong);
+  }
+  .polaroid-hover:hover {
+    transform: rotate(0deg) scale(1.06) !important;
+    box-shadow: 0 14px 28px rgba(51, 86, 156, 0.22);
+    z-index: 30;
+  }
+}
+
+.view-map-btn {
+  transition: transform 160ms var(--ease-out-strong), background-color 160ms ease;
+}
+.view-map-btn:active {
+  transform: scale(0.95);
+}
+@media (hover: hover) and (pointer: fine) {
+  .view-map-btn:hover {
+    background-color: #d8e8f7;
+  }
+}
+
+/* Focus visibility on a pale ground */
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}

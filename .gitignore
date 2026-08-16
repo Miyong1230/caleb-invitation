@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+.env*.local
+.env
+data/rsvps.json
+*.tsbuildinfo
+next-env.d.ts
+shots/
+shots2/
+shots3/
+shots4/

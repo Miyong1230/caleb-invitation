@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 340">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0.6" y2="1">
+    <stop offset="0%" stop-color="#eef5fc"/>
+    <stop offset="100%" stop-color="#cfe2f3"/>
+  </linearGradient>
+</defs>
+<rect width="440" height="340" fill="url(#bg)"/>
+
+<g stroke="#8fa8c4" stroke-width="3" stroke-linejoin="round">
+  <rect x="150" y="130" width="140" height="140" fill="#f3ead9"/>
+  <path d="M140 130 L220 70 L300 130 Z" fill="#d9b88f"/>
+  <rect x="205" y="200" width="30" height="70" rx="14" fill="#8fb4d9"/>
+  <rect x="90" y="170" width="60" height="100" fill="#efe3cd"/>
+  <rect x="290" y="170" width="60" height="100" fill="#efe3cd"/>
+  <circle cx="220" cy="150" r="17" fill="#bcd6ec"/>
+  <circle cx="220" cy="52" r="10" fill="#eec95f" stroke="#c98f27" stroke-width="3"/>
+</g>
+<g transform="translate(50 50) scale(0.7)" opacity="1">
+  <path d="M32 4 C34 16 37 22 44 25 C51 27 55 28 60 30 C53 33 49 34 44 37 C38 40 35 46 32 58 C29 46 26 40 20 37 C15 34 11 33 4 30 C9 28 13 27 20 25 C27 22 30 16 32 4 Z" fill="#eec95f" stroke="#c98f27" stroke-width="1.4" stroke-opacity="0.5"/>
+</g>
+<g transform="translate(310 40) scale(0.6)" opacity="0.85">
+  <ellipse cx="60" cy="80" rx="52" ry="30" fill="#ffffff"/>
+  <ellipse cx="115" cy="58" rx="55" ry="38" fill="#ffffff"/>
+  <ellipse cx="165" cy="82" rx="48" ry="28" fill="#ffffff"/>
+</g>
+<text x="220" y="326" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#33569c" opacity="0.75">Church photo — replace in Admin</text>
+</svg>

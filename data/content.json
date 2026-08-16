@@ -1,0 +1,119 @@
+{
+  "envelope": {
+    "title": "You’re invited!",
+    "hint": "Click on the envelope.",
+    "sealInitial": "C"
+  },
+  "hero": {
+    "topLine": "Join us as we celebrate the",
+    "eventType": "Post Birthday Celebration",
+    "ofLine": "of our child",
+    "childName": "Caleb Angelo",
+    "dayName": "Sunday",
+    "dayNumber": "30",
+    "monthName": "August",
+    "time": "7:00 PM",
+    "venueName": "Stella Luna Private Resort",
+    "venueAddress": "Lakewood Subdivision Los Baños, Laguna",
+    "hint": "Click the bear for more details.",
+    "babyPhoto": "/uploads/1786857995612-bd204e28.jpg",
+    "polaroids": [
+      "/uploads/1786858033373-2bfe79b5.jpg",
+      "/uploads/1786858050859-4bd1ae5e.jpg",
+      "/uploads/1786858065686-40d71947.jpg"
+    ]
+  },
+  "details": {
+    "heading": "Details",
+    "dateTimeTitle": "Date & Time",
+    "dateLine": "August 30, 2026",
+    "timeLine": "7:00 PM",
+    "ceremonyTitle": "Ceremony",
+    "ceremonyName": "",
+    "ceremonyAddress": "Calamba City, Laguna",
+    "ceremonyMapUrl": "https://www.google.com/maps/search/?api=1&query=St.+John+the+Baptist+Parish+Calamba+City+Laguna",
+    "ceremonyPhoto": "/placeholders/church.svg",
+    "receptionTitle": "Venue",
+    "receptionName": "Stella Luna Private Resort",
+    "receptionAddress": "Lakewood Subdivision Los Baños, Laguna",
+    "receptionMapUrl": "https://www.bing.com/maps/search?mid=8100&mkt=en-US&pc=FACEBK&v=2&FORM=FBKPL1&q=Lot+28+Lot+30%2C+Lakewood+Subdivision%2C+Los+Ba%C3%B1os%2C+Philippines&cp=14.173083%7E121.210497&lvl=16&style=r",
+    "receptionPhoto": "/uploads/1786860597684-0010e684.jpg",
+    "countdownTitle": "Countdown to Caleb’s Day!",
+    "eventISO": "2026-08-30T14:00:00+08:00"
+  },
+  "dressCode": {
+    "heading": "Dress Code",
+    "body": "We kindly encourage all guests to come in comfortable casual outfits in the shades of:",
+    "colors": [
+      "#efe6d8",
+      "#c19a6f",
+      "#f5f5f5"
+    ],
+    "colorNames": [
+      "Cream",
+      "Tan",
+      "White"
+    ]
+  },
+  "reminders": {
+    "heading": "Reminders",
+    "intro": "As we protect our little one’s developing immune system and for our safety, please be reminded of the following:",
+    "items": [
+      {
+        "icon": "sanitize",
+        "text": "Sanitize your hands before holding Caleb."
+      },
+      {
+        "icon": "no-smoke",
+        "text": "No vaping or smoking."
+      },
+      {
+        "icon": "mask",
+        "text": "If you’re feeling sick, we understand if you need to stay at home."
+      }
+    ]
+  },
+  "gifts": {
+    "nameLetters": "CALEB",
+    "letterPhoto": "/placeholders/letters.svg",
+    "heading": "Gift Guide",
+    "intro": "Your love and prayers are the greatest gift. But if you desire to give nonetheless, practical gifts are warmly appreciated. Here are some ideas:",
+    "items": [
+      {
+        "name": "Educational Toys",
+        "photo": "/uploads/1786861957728-7ae83da9.jpg"
+      },
+      {
+        "name": "Car or Motorcycle Toys",
+        "photo": "/uploads/1786862292670-8468c233.jpg"
+      }
+    ],
+    "monetaryTitle": "Monetary Gifts for Caleb's Savings",
+    "outro": "",
+    "letterImages": [
+      "/uploads/letter-c.webp",
+      "/uploads/letter-a.webp",
+      "/uploads/letter-l.webp",
+      "/uploads/letter-e.webp",
+      "/uploads/letter-b.webp"
+    ]
+  },
+  "rsvp": {
+    "heading": "Save the date!",
+    "message": "We hope to see you on Caleb’s special day!",
+    "hosts": "~ Harold and Len",
+    "rsvpTitle": "RSVP",
+    "rsvpNote": "Kindly confirm your attendance on or before August 20, 2026.",
+    "collage": [
+      "/uploads/1786862415544-0a6c6d6f.jpg",
+      "/uploads/1786862434271-7fe50a63.jpg",
+      "/uploads/1786862482710-63d8e155.jpg",
+      "/uploads/1786862501120-eea31d76.jpg",
+      "/uploads/1786862520849-1b2da85c.jpg",
+      "/uploads/1786862549492-ac8976fc.jpg",
+      "/uploads/1786862578479-86385773.jpg",
+      "/uploads/1786862609307-2c48ba8c.jpg",
+      "/uploads/1786862634731-b48626cf.jpg"
+    ]
+  }
+}

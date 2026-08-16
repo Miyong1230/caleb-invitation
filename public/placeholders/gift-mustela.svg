@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 300">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0.6" y2="1">
+    <stop offset="0%" stop-color="#eef5fc"/>
+    <stop offset="100%" stop-color="#cfe2f3"/>
+  </linearGradient>
+</defs>
+<rect width="360" height="300" fill="url(#bg)"/>
+
+<g stroke="#6a94c2" stroke-width="3" stroke-linejoin="round">
+  <rect x="110" y="80" width="60" height="160" rx="16" fill="#fdf9f0"/>
+  <rect x="122" y="60" width="36" height="26" rx="6" fill="#8fb4d9"/>
+  <rect x="196" y="110" width="66" height="130" rx="14" fill="#dcebf8"/>
+  <rect x="212" y="92" width="34" height="24" rx="5" fill="#f2e6cf"/>
+  <rect x="120" y="130" width="40" height="60" rx="5" fill="#bcd6ec"/>
+  <rect x="206" y="150" width="46" height="52" rx="5" fill="#fdf9f0"/>
+</g>
+<g transform="translate(50 46) scale(0.6)" opacity="1">
+  <path d="M32 4 C34 16 37 22 44 25 C51 27 55 28 60 30 C53 33 49 34 44 37 C38 40 35 46 32 58 C29 46 26 40 20 37 C15 34 11 33 4 30 C9 28 13 27 20 25 C27 22 30 16 32 4 Z" fill="#eec95f" stroke="#c98f27" stroke-width="1.4" stroke-opacity="0.5"/>
+</g>
+<g transform="translate(300 40) scale(0.5)" opacity="1">
+  <path d="M32 4 C34 16 37 22 44 25 C51 27 55 28 60 30 C53 33 49 34 44 37 C38 40 35 46 32 58 C29 46 26 40 20 37 C15 34 11 33 4 30 C9 28 13 27 20 25 C27 22 30 16 32 4 Z" fill="#eec95f" stroke="#c98f27" stroke-width="1.4" stroke-opacity="0.5"/>
+</g>
+<text x="180" y="286" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#33569c" opacity="0.75">Product photo — replace in Admin</text>
+</svg>

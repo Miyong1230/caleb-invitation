@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-16T00:00:00Z",
+  "title": "Design System: Levi's Baptism Invitation",
+  "extensions": {
+    "colorMeta": {
+      "ink": { "role": "primary", "displayName": "Storybook Ink", "canonical": "#33569c", "tonalRamp": ["#101c34", "#1b2e54", "#253f74", "#33569c", "#5375b4", "#7d97c8", "#aabddd", "#d6e0f0"] },
+      "ink-deep": { "role": "primary", "displayName": "Deep Ink", "canonical": "#2a4780", "tonalRamp": ["#0d1626", "#182a4a", "#21396a", "#2a4780", "#4a659c", "#7389b8", "#a1b1d2", "#d2daea"] },
+      "navy-panel": { "role": "primary", "displayName": "Night Panel Navy", "canonical": "#31507e", "tonalRamp": ["#0e1726", "#1a2c47", "#253e63", "#31507e", "#4f6d99", "#7690b4", "#a3b6d0", "#d2dcea"] },
+      "sky-deep": { "role": "neutral", "displayName": "Deep Sky", "canonical": "#8fb4d9", "tonalRamp": ["#16283a", "#2b4a66", "#476b8f", "#6b93b8", "#8fb4d9", "#accbe6", "#cadff0", "#e7f1f9"] },
+      "sky-mid": { "role": "neutral", "displayName": "Mid Sky", "canonical": "#bcd6ec", "tonalRamp": ["#1b2836", "#33506b", "#537898", "#7c9fc0", "#9dbdd9", "#bcd6ec", "#d6e6f4", "#edf5fb"] },
+      "sky-wash": { "role": "neutral", "displayName": "Sky Wash", "canonical": "#e3eff9", "tonalRamp": ["#1d2a36", "#3a5468", "#5f7f96", "#8aa8bd", "#b3c9da", "#cfdfec", "#e3eff9", "#f2f8fd"] },
+      "cream": { "role": "secondary", "displayName": "Nursery Cream", "canonical": "#fdf9f0", "tonalRamp": ["#33291a", "#5c4c33", "#8a7452", "#b39c78", "#d4c1a0", "#e9dcc4", "#f5ecda", "#fdf9f0"] },
+      "tan": { "role": "secondary", "displayName": "Kraft Tan", "canonical": "#c19a6f", "tonalRamp": ["#2e2114", "#533c24", "#7a5936", "#9a7048", "#c19a6f", "#d4b58f", "#e4cfb2", "#f2e6d4"] },
+      "tan-deep": { "role": "secondary", "displayName": "Toasted Tan", "canonical": "#9a7048", "tonalRamp": ["#241a10", "#42301e", "#63482c", "#82603a", "#9a7048", "#b7936c", "#d2b898", "#ecdcc6"] },
+      "fur": { "role": "tertiary", "displayName": "Teddy Fur", "canonical": "#d3a878", "tonalRamp": ["#2f2213", "#573f24", "#7f5c37", "#a8824f", "#d3a878", "#e0bf97", "#ecd4b4", "#f8ecda"] },
+      "fur-light": { "role": "tertiary", "displayName": "Belly Fur", "canonical": "#ecd4b4", "tonalRamp": ["#332918", "#5c4b2e", "#877048", "#b09565", "#d1b78c", "#ecd4b4", "#f4e4cc", "#faf2e3"] },
+      "gold": { "role": "tertiary", "displayName": "Star Gold", "canonical": "#eec95f", "tonalRamp": ["#3a2c0c", "#6b5316", "#9c7a24", "#c79c32", "#eec95f", "#f3d883", "#f8e6ab", "#fcf3d6"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Script (Great Vibes)", "purpose": "Announcements: section headings, the child's name, venue titles. Never below text-3xl." },
+      "headline": { "displayName": "Serif (EB Garamond)", "purpose": "Formal numerals and serif headings: date block, countdown digits (tabular-nums), photo-filled name letters." },
+      "body": { "displayName": "Hand Print (Patrick Hand)", "purpose": "All prose, hints, inputs, and buttons; capped at 24-44ch per block." },
+      "label": { "displayName": "Small Caps (EB Garamond)", "purpose": "Whispered labels: addresses, curved arch inscriptions, form labels, countdown units. 0.18em tracking, uppercase." }
+    },
+    "shadows": [
+      { "name": "panel-plume", "value": "0 30px 70px rgba(51,86,156,0.25)", "purpose": "Large keepsake panels (arch cards, gingham mats); variants 0 26px 60px / 0 24px 54px at 0.2-0.22." },
+      { "name": "paper-lift", "value": "0 8px 20px rgba(51,86,156,0.16)", "purpose": "Polaroids and small paper objects at rest." },
+      { "name": "hover-lift", "value": "0 14px 28px rgba(51,86,156,0.22)", "purpose": "Polaroid hover, paired with scale(1.06) and z-30." },
+      { "name": "button-glow", "value": "0 10px 24px rgba(51,86,156,0.35)", "purpose": "Primary RSVP button." },
+      { "name": "chip-shadow", "value": "0 3px 8px rgba(51,86,156,0.14)", "purpose": "Map chips and small pills." },
+      { "name": "inset-pocket", "value": "inset 0 -4px 14px rgba(51,86,156,0.08)", "purpose": "Envelope pocket interior shade." },
+      { "name": "warm-plume", "value": "0 24px 54px rgba(154,112,72,0.25)", "purpose": "Tan/cream panels shade with their own warm hue, never navy." }
+    ],
+    "motion": [
+      { "name": "ease-out-strong", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "Default ease: reveals, presses, hovers, countdown digit rolls." },
+      { "name": "ease-drawer", "value": "cubic-bezier(0.32, 0.72, 0, 1)", "purpose": "Envelope choreography: flap rotateX -180 (0.75s, delay 0.18), card rise y -125% scale 1.12 (0.85s, delay 0.62)." },
+      { "name": "ease-in-out-strong", "value": "cubic-bezier(0.77, 0, 0.175, 1)", "purpose": "Declared reserve ease; not yet consumed by a component." },
+      { "name": "parallax-spring", "value": "spring(stiffness: 60, damping: 18, mass: 0.6)", "purpose": "Pointer parallax on decorative floaters; depth 8-34px, vertical x0.7; fine pointers only." },
+      { "name": "reveal", "value": "opacity 0, y 22-28px, blur(4px) -> 0 over 0.6-0.7s", "purpose": "Scroll entrances; stagger 0.07-0.12 in groups; opacity-only under reduced motion." },
+      { "name": "ambient-loops", "value": "bob 5s / bob-soft 4s / drift 9s / twinkle 2.6s / balloon-rise 6s / sway 4s, ease-in-out infinite", "purpose": "CSS utility classes .anim-*; per-instance --dur, --tilt, animationDelay; all disabled under prefers-reduced-motion." },
+      { "name": "seal-pulse", "value": "box-shadow ring 0 -> 18px over 2.6s ease-out infinite", "purpose": "Idle attention pulse on the wax seal; stops the moment opening begins." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one filled action: Send my RSVP. Ink pill, hand-print voice, navy glow.",
+      "html": "<button class=\"ds-btn-primary\">Send my RSVP</button>",
+      "css": ".ds-btn-primary { background: var(--ink, #33569c); color: #fff; font-family: 'Patrick Hand', 'Comic Sans MS', cursive; font-size: 1.5rem; padding: 14px 32px; border: none; border-radius: 9999px; box-shadow: 0 10px 24px rgba(51,86,156,0.35); cursor: pointer; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn-primary:hover { transform: scale(1.03); } .ds-btn-primary:active { transform: scale(0.96); } .ds-btn-primary:focus-visible { outline: 3px solid var(--ink, #33569c); outline-offset: 3px; } .ds-btn-primary:disabled { opacity: 0.6; }"
+    },
+    {
+      "name": "Map Chip",
+      "kind": "button",
+      "refersTo": "button-map-chip",
+      "description": "Small-caps pill link under each venue; pale sky fill with a deep-sky border.",
+      "html": "<a class=\"ds-chip-map\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 21c-4-4.5-7-8-7-11.5A7 7 0 0 1 12 2a7 7 0 0 1 7 7.5C19 13 16 16.5 12 21Z\"/><circle cx=\"12\" cy=\"9.5\" r=\"2.5\"/></svg>View map</a>",
+      "css": ".ds-chip-map { display: inline-flex; align-items: center; gap: 6px; background: #eaf3fb; color: var(--ink, #33569c); border: 1px solid var(--sky-deep, #8fb4d9); border-radius: 9999px; padding: 6px 16px; font-family: 'EB Garamond', Georgia, serif; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; box-shadow: 0 3px 8px rgba(51,86,156,0.14); transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 160ms ease; } .ds-chip-map:hover { background: #d8e8f7; } .ds-chip-map:active { transform: scale(0.95); }"
+    },
+    {
+      "name": "RSVP Input",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Hand-print text field: white paper, sky border, ink focus.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Your name</span><input class=\"ds-input\" placeholder=\"Juan &amp; Maria Dela Cruz\"/></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; } .ds-field-label { font-family: 'EB Garamond', Georgia, serif; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink, #33569c); } .ds-input { width: 100%; background: #fff; color: var(--ink-deep, #2a4780); border: 2px solid var(--sky-mid, #bcd6ec); border-radius: 16px; padding: 12px 16px; font-family: 'Patrick Hand', 'Comic Sans MS', cursive; font-size: 1.25rem; transition: border-color 200ms; } .ds-input::placeholder { color: #4d699b; } .ds-input:focus { border-color: var(--ink, #33569c); outline: none; }"
+    },
+    {
+      "name": "Polaroid",
+      "kind": "card",
+      "refersTo": "card-polaroid",
+      "description": "Taped, tilted white photo frame; straightens and lifts on hover.",
+      "html": "<figure class=\"ds-polaroid\"><svg class=\"ds-polaroid-tape\" viewBox=\"0 0 80 26\"><path d=\"M4 4 L76 2 L78 22 L2 24 Z\" fill=\"#e8d9bd\" opacity=\"0.85\"/></svg><div class=\"ds-polaroid-photo\"></div></figure>",
+      "css": ".ds-polaroid { position: relative; width: 120px; margin: 16px; background: #fff; padding: 8px 8px 12px; box-shadow: 0 8px 20px rgba(51,86,156,0.16); transform: rotate(-5deg); transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 220ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-polaroid:hover { transform: rotate(0deg) scale(1.06); box-shadow: 0 14px 28px rgba(51,86,156,0.22); z-index: 30; } .ds-polaroid-tape { position: absolute; top: -10px; left: 50%; width: 52px; transform: translateX(-50%); } .ds-polaroid-photo { aspect-ratio: 4 / 5; width: 100%; background: linear-gradient(160deg, #bcd6ec, #8fb4d9); }"
+    },
+    {
+      "name": "Gingham Mat Card",
+      "kind": "card",
+      "description": "Blue gingham mat with a cream inner panel: the mounted-on-fabric card construction.",
+      "html": "<div class=\"ds-mat\"><div class=\"ds-mat-inner\"><p class=\"ds-mat-script\">Gift guide</p><p class=\"ds-mat-body\">Your presence is the best present of all.</p></div></div>",
+      "css": ".ds-mat { max-width: 360px; border-radius: 34px; padding: 16px; background: repeating-linear-gradient(0deg, rgba(140,178,216,0.55) 0 14px, transparent 14px 28px), repeating-linear-gradient(90deg, rgba(140,178,216,0.55) 0 14px, transparent 14px 28px), #f5faff; box-shadow: 0 24px 54px rgba(51,86,156,0.22); } .ds-mat-inner { border-radius: 26px; background: #fefcf7; padding: 32px 24px; text-align: center; } .ds-mat-script { font-family: 'Great Vibes', cursive; font-size: 3rem; line-height: 1; color: var(--ink, #33569c); margin: 0; } .ds-mat-body { font-family: 'Patrick Hand', 'Comic Sans MS', cursive; font-size: 1.25rem; color: var(--ink, #33569c); margin: 12px 0 0; }"
+    },
+    {
+      "name": "Wax Seal Button",
+      "kind": "custom",
+      "description": "The front door: an irregular blue wax blob bearing the initial in script; pulses at idle, breaks on click.",
+      "html": "<button class=\"ds-seal\" aria-label=\"Break the seal and open the invitation\"><svg viewBox=\"0 0 120 120\"><defs><radialGradient id=\"ds-waxG\" cx=\"38%\" cy=\"32%\" r=\"80%\"><stop offset=\"0%\" stop-color=\"#8db0da\"/><stop offset=\"70%\" stop-color=\"#5b84b8\"/><stop offset=\"100%\" stop-color=\"#46689a\"/></radialGradient></defs><path d=\"M60 8 C74 6 82 14 92 16 C102 18 112 26 110 40 C109 50 114 58 112 68 C110 80 102 88 94 92 C84 97 78 108 64 110 C50 112 44 102 34 98 C22 94 10 88 10 72 C10 62 6 54 8 44 C10 30 20 22 32 18 C42 14 48 10 60 8 Z\" fill=\"url(#ds-waxG)\"/><circle cx=\"60\" cy=\"59\" r=\"38\" fill=\"none\" stroke=\"#3d5c8c\" stroke-width=\"2.4\" stroke-dasharray=\"4 5\" opacity=\"0.75\"/><text x=\"60\" y=\"74\" text-anchor=\"middle\" font-size=\"42\" fill=\"#2e4a75\" font-family=\"'Great Vibes', cursive\">L</text></svg></button>",
+      "css": ".ds-seal { width: 96px; background: none; border: none; padding: 0; border-radius: 9999px; cursor: pointer; animation: ds-seal-pulse 2.6s ease-out infinite; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-seal:hover { transform: scale(1.07); } .ds-seal:active { transform: scale(0.96); } .ds-seal:focus-visible { outline: 3px solid var(--ink, #33569c); outline-offset: 3px; } @keyframes ds-seal-pulse { 0%, 100% { box-shadow: 0 2px 10px rgba(51,86,156,0.35), 0 0 0 0 rgba(122,162,212,0.55); } 70% { box-shadow: 0 2px 10px rgba(51,86,156,0.35), 0 0 0 18px rgba(122,162,212,0); } } @media (prefers-reduced-motion: reduce) { .ds-seal { animation: none; } }"
+    },
+    {
+      "name": "Attendance Toggle",
+      "kind": "chip",
+      "description": "Two-cell segmented control; an ink pill slides behind the chosen answer.",
+      "html": "<div class=\"ds-toggle\"><span class=\"ds-toggle-thumb\"></span><button class=\"ds-toggle-btn ds-toggle-on\" aria-pressed=\"true\">Joyfully yes!</button><button class=\"ds-toggle-btn\" aria-pressed=\"false\">Sadly, no</button></div>",
+      "css": ".ds-toggle { position: relative; display: grid; grid-template-columns: 1fr 1fr; max-width: 320px; background: #fff; border: 2px solid var(--sky-mid, #bcd6ec); border-radius: 16px; padding: 4px; } .ds-toggle-thumb { position: absolute; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px); background: var(--ink, #33569c); border-radius: 12px; transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1); } .ds-toggle-btn { position: relative; z-index: 1; background: none; border: none; border-radius: 12px; padding: 10px 8px; font-family: 'Patrick Hand', 'Comic Sans MS', cursive; font-size: 1.25rem; color: var(--ink, #33569c); cursor: pointer; transition: color 200ms; } .ds-toggle-btn.ds-toggle-on { color: #fff; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Kept Keepsake",
+    "overview": "A sealed envelope that opens into a living watercolor nursery-sky. The guest breaks a blue wax seal, a 3D flap swings back, the card rises out of the pocket, and the page beneath is a drifting powder-blue sky populated by hand-drawn teddy bears, clouds, hot-air balloons, and gold stars — every one of them an inline SVG that floats, twinkles, or leans toward the cursor. The invitation refuses the static card-image-in-a-page default: it is a physical object (envelope, polaroids with tape, torn navy paper, gingham mats, stitched borders) rendered in pigment and paper grain, built to be opened on a phone in bright daylight. Light theme only; the scene forces it.\n\nThe world is recognizable with all content removed: powder-blue turbulence-displaced watercolor washes on every ground, cream and tan gingham checks, arched panels shaped like nursery windows, script + hand-print + small-caps typography, and a decor family drawn in one grammar (soft radial-gradient fills, rounded tan strokes at ~50% opacity, no hard lines).",
+    "keyCharacteristics": [
+      "Single powder-blue hue family for surfaces and ink; warmth arrives only through tan/cream/gold accents.",
+      "Every decorative element is alive: a CSS ambient loop plus spring pointer-parallax, all reduced-motion-guarded.",
+      "Paper physicality everywhere: grain overlays, watercolor wash overlays, tape, torn edges, dashed stitching.",
+      "Content lives inside keepsake shapes — arches, inverted arches, matted cards — never plain rectangles.",
+      "Two registers: the invitation (this world) and /admin, a deliberately plain Operate surface."
+    ],
+    "rules": [
+      { "name": "The One Sky Rule", "body": "Every cool color on the page belongs to the single powder-blue family (#e3eff9 -> #2a4780). No second cool hue — no teal, no violet, no gray — ever enters the sky.", "section": "colors" },
+      { "name": "The Warm-Accent Rule", "body": "Tan, cream, fur, and gold exist to make the blue feel like a nursery, not a corporation. They appear on objects (wood, paper, fur, stars, gingham), never as text-block backgrounds except the cream reminder card.", "section": "colors" },
+      { "name": "The Three Voices Rule", "body": "Script announces, print speaks, small caps label. Roles never swap: no script body copy, no hand-lettered headings, no small-caps sentences.", "section": "typography" },
+      { "name": "The Big-Script Rule", "body": "Great Vibes only works large. It never appears below ~1.875rem (text-3xl); at label sizes the small caps take over.", "section": "typography" },
+      { "name": "The Decor-Orbits Rule", "body": "Content lives inside the panel; drawn characters live on its rim (overlapping corners, crowning the arch, peeking from behind). Decor never sits between paragraphs.", "section": "layout" },
+      { "name": "The Tinted Shadow Rule", "body": "No shadow is ever neutral black; every box-shadow and drop-shadow carries the ink's navy (51,86,156) or the panel's own hue (tan cards shade with rgba(154,112,72,...)).", "section": "elevation" },
+      { "name": "The Arch Rule", "body": "Major content panels are arches, inverted arches, or torn/matted paper — never a plain rounded rectangle. Plain rectangles are allowed only inside a mat (polaroids, gift photos).", "section": "shapes" }
+    ],
+    "dos": [
+      "Do draw every new decorative element as inline SVG in the decor grammar: gradient fills from the fur/sky/gold families, rounded #9a7048 strokes at ~50% opacity, aria-hidden=\"true\".",
+      "Do give every decorative element an ambient loop (anim-* with a bespoke --dur) and, if free-floating, a Parallax wrapper with depth 8-34.",
+      "Do guard every animation: CSS loops via the prefers-reduced-motion block, JS motion via useReducedMotion() with an opacity-only or instant fallback.",
+      "Do tint every shadow with the ink (rgba(51,86,156,...)) or the local panel hue; keep panels on the plume/lift/glow vocabulary.",
+      "Do enter content with the Reveal primitives (y + blur + [0.23, 1, 0.32, 1]), staggered 0.07-0.12 in groups.",
+      "Do keep new panels inside keepsake shapes — arch radii, gingham mats, torn edges — with .paper-grain and usually a .watercolor-wash."
+    ],
+    "donts": [
+      "Don't introduce icon fonts, emoji decor, stock clipart, or raster illustration; the drawn SVG family is the only image language besides real photos (which live in polaroid frames).",
+      "Don't use black or neutral-gray shadows, borders, or text; the coolest neutral is the sky family, the darkest voice is Deep Ink.",
+      "Don't set Great Vibes below text-3xl, use it for body copy, or letter-space it; small caps (0.18em) are the only tracked text.",
+      "Don't add a second cool hue or a dark mode; the scene is a daylight sky, light theme forced.",
+      "Don't animate anything without a purpose loop or interaction meaning — no motion on body text, and nothing that escapes the reduced-motion guards.",
+      "Don't bring envelope/watercolor theatrics into /admin, or admin's utilitarian inputs into the invitation."
+    ]
+  }
+}
