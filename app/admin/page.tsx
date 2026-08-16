@@ -4,7 +4,7 @@
 // Operate surface — clarity first, the watercolor world stays in the details.
 
 import { useCallback, useEffect, useState } from "react";
-import { SiteContent, RsvpEntry, ReminderItem } from "@/lib/content";
+import { SiteContent, RsvpEntry, ReminderItem, nickname } from "@/lib/content";
 
 /* ---------- tiny path helpers ---------- */
 
@@ -187,7 +187,7 @@ function PhotoField({
 
 /* ---------- login ---------- */
 
-function Login({ onDone }: { onDone: () => void }) {
+function Login({ onDone, name }: { onDone: () => void; name: string }) {
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("");
   const [busy, setBusy] = useState(false);
@@ -218,7 +218,9 @@ function Login({ onDone }: { onDone: () => void }) {
         onSubmit={submit}
         className="w-full max-w-sm rounded-2xl border border-[#dbe7f3] bg-white p-8 shadow-[0_18px_44px_rgba(51,86,156,0.15)]"
       >
-        <h1 className="font-script text-4xl text-[#33569c]">Levi’s Invitation</h1>
+        <h1 className="font-script text-4xl text-[#33569c]">
+          {name ? `${name}’s Invitation` : "Invitation"}
+        </h1>
         <p className="mt-1 text-sm text-[#5a769c]">
           Sign in to edit the invitation and see RSVPs.
         </p>
@@ -456,7 +458,9 @@ export default function AdminPage() {
       </div>
     );
   }
-  if (!authed) return <Login onDone={refresh} />;
+  if (!authed) {
+    return <Login onDone={refresh} name={content ? nickname(content) : ""} />;
+  }
   const c = content!;
 
   return (
@@ -464,7 +468,9 @@ export default function AdminPage() {
       {/* header */}
       <header className="sticky top-0 z-40 border-b border-[#dbe7f3] bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center gap-4 px-4 py-3">
-          <h1 className="font-script text-3xl text-[#33569c]">Levi’s Invitation — Admin</h1>
+          <h1 className="font-script text-3xl text-[#33569c]">
+            {nickname(c)}’s Invitation — Admin
+          </h1>
           <div className="ml-auto flex items-center gap-3">
             <a
               href="/"

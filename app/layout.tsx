@@ -22,11 +22,15 @@ const garamond = EB_Garamond({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "You’re Invited — Levi’s Baptism",
-  description:
-    "Join us as we celebrate the baptism of Jax Levi — open your invitation.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { getContent } = await import("@/lib/store");
+  const content = await getContent();
+  const h = content.hero;
+  return {
+    title: `You’re Invited — ${h.childName}’s ${h.eventType}`,
+    description: `${h.topLine} ${h.eventType.toLowerCase()} of ${h.childName} — open your invitation.`,
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: "#e3eff9",
